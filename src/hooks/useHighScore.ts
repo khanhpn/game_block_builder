@@ -13,16 +13,15 @@ const readHighScore = (): number => {
 
 export function useHighScore(score: number): number {
   const [highScore, setHighScore] = useState(() => Math.max(readHighScore(), score));
+  if (score > highScore) setHighScore(score);
 
   useEffect(() => {
-    if (score <= highScore) return;
-    setHighScore(score);
     try {
-      localStorage.setItem(STORAGE_KEY, String(score));
+      localStorage.setItem(STORAGE_KEY, String(highScore));
     } catch {
       // Storage is optional; the in-memory score remains available.
     }
-  }, [score, highScore]);
+  }, [highScore]);
 
-  return Math.max(highScore, score);
+  return highScore;
 }

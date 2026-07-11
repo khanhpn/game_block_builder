@@ -1,0 +1,42 @@
+.game-shell {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(205px, 275px) minmax(290px, 410px) minmax(210px, 290px);
+  justify-content: center;
+  align-items: center;
+  gap: clamp(28px, 4vw, 76px);
+  min-height: 100vh;
+  padding: 34px clamp(24px, 5vw, 82px);
+  overflow: hidden;
+  background:
+    linear-gradient(rgb(5 9 21 / 82%), rgb(5 9 21 / 90%)),
+    repeating-linear-gradient(90deg, transparent 0 69px, rgb(69 231 255 / 3%) 70px),
+    repeating-linear-gradient(0deg, transparent 0 69px, rgb(69 231 255 / 3%) 70px),
+    radial-gradient(circle at 48% 38%, #14213e 0, #070b18 45%, #03050d 100%);
+}
+.game-shell::before { content: ""; position: absolute; inset: 0; z-index: -2; opacity: .38; background-image: radial-gradient(rgb(255 255 255 / 25%) .5px, transparent .5px); background-size: 8px 8px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
+.game-shell::after { content: "NEON BLOCKS  //  ARCADE PROTOCOL"; position: absolute; right: 28px; bottom: 20px; color: rgb(116 139 180 / 30%); font: 700 8px/1 monospace; letter-spacing: .22em; }
+.ambient { position: absolute; z-index: -1; border-radius: 999px; filter: blur(80px); opacity: .17; pointer-events: none; }
+.ambient--one { width: 460px; height: 460px; left: 35%; top: 15%; background: #334dff; }
+.ambient--two { width: 300px; height: 300px; right: -70px; bottom: -80px; background: #b72cff; }
+.left-column, .stats-column { position: relative; z-index: 2; }
+.left-column { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.brand-mark { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: 10px; color: #9eaac0; font-size: 9px; font-weight: 700; letter-spacing: .18em; line-height: 1.25; }
+.brand-mark b { color: #fff; }
+.brand-icon { display: grid; place-items: center; width: 35px; height: 35px; color: #05101a; border-radius: 9px; background: linear-gradient(145deg, #69f6ff, #4478ff); box-shadow: 0 0 24px rgb(69 231 255 / 28%); font-size: 17px; font-weight: 1000; transform: skew(-7deg); }
+.intro-copy { margin: auto 0 34px; }
+.intro-copy h1 { margin: 18px 0 20px; color: #f8fbff; font-size: clamp(46px, 5vw, 72px); font-weight: 900; letter-spacing: -.075em; line-height: .82; text-transform: uppercase; }
+.intro-copy h1 em { color: transparent; background: linear-gradient(90deg, #53e8ff, #7e8cff 52%, #d866ff); background-clip: text; font-style: normal; text-shadow: 0 0 36px rgb(88 185 255 / 20%); }
+.intro-copy p { margin: 0; color: #74829c; font-size: 14px; line-height: 1.6; }
+.desktop-note { display: flex; align-items: center; gap: 9px; margin: 20px 0 0; color: #4f5f7a; font: 700 8px/1 monospace; letter-spacing: .1em; text-transform: uppercase; }
+.desktop-note span { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
+.stats-column { display: flex; flex-direction: column; gap: 16px; }
+.system-message { display: flex; gap: 13px; align-items: center; margin-top: 3px; padding: 12px 14px; color: var(--green); border: 1px solid rgb(109 255 174 / 12%); border-radius: 10px; background: rgb(8 22 24 / 45%); }
+.system-message > span { font-size: 11px; }
+.system-message p { display: flex; flex-direction: column; gap: 3px; margin: 0; }
+.system-message b { color: #a9c8bc; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+.system-message small { color: #536d68; font-size: 8px; }
+@media (max-width: 1000px) { .game-shell { grid-template-columns: minmax(180px, 230px) minmax(280px, 370px) minmax(180px, 230px); gap: 24px; padding-inline: 24px; } }
+@media (max-width: 820px) { .game-shell { grid-template-columns: minmax(280px, 410px); align-items: start; overflow: hidden; padding-block: 28px 50px; } .left-column { display: contents; } .brand-mark { position: relative; grid-row: 1; } .intro-copy { display: none; } .controls-panel, .desktop-note { display: none; } .board-frame { grid-row: 2; } .stats-column { grid-row: 3; display: grid; grid-template-columns: 1fr 1fr; } .system-message { grid-column: 1 / -1; } }
+@media (max-width: 470px) { .game-shell { grid-template-columns: 1fr; padding: 20px 14px 44px; } .stats-column { grid-template-columns: 1fr; } .system-message { grid-column: auto; } }
