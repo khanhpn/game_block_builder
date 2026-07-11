@@ -16,12 +16,19 @@ describe('game reducer', () => {
     const ready = createInitialState(() => 0.5);
     expect(gameReducer(ready, { type: 'MOVE', dx: -1 })).toBe(ready);
     const playing = gameReducer(ready, { type: 'START' });
-    expect(gameReducer(playing, { type: 'MOVE', dx: -1 }).activePiece.x).toBe(playing.activePiece.x - 1);
-    expect(gameReducer(playing, { type: 'ROTATE' }).activePiece.matrix).not.toEqual(playing.activePiece.matrix);
+    expect(gameReducer(playing, { type: 'MOVE', dx: -1 }).activePiece.x).toBe(
+      playing.activePiece.x - 1,
+    );
+    expect(gameReducer(playing, { type: 'ROTATE' }).activePiece.matrix).not.toEqual(
+      playing.activePiece.matrix,
+    );
   });
 
   it('awards hard-drop points and locks the piece', () => {
-    const playing = gameReducer(createInitialState(() => 0.5), { type: 'START' });
+    const playing = gameReducer(
+      createInitialState(() => 0.5),
+      { type: 'START' },
+    );
     const dropped = gameReducer(playing, { type: 'HARD_DROP' });
     expect(dropped.score).toBeGreaterThan(0);
     expect(dropped.board.flat().filter(Boolean)).toHaveLength(4);
@@ -29,7 +36,10 @@ describe('game reducer', () => {
   });
 
   it('moves down on tick and awards a soft-drop point', () => {
-    const playing = gameReducer(createInitialState(() => 0.5), { type: 'START' });
+    const playing = gameReducer(
+      createInitialState(() => 0.5),
+      { type: 'START' },
+    );
     expect(gameReducer(playing, { type: 'TICK' }).activePiece.y).toBe(playing.activePiece.y + 1);
     expect(gameReducer(playing, { type: 'SOFT_DROP' }).score).toBe(1);
   });

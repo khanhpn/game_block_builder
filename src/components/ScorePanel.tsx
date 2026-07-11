@@ -1,12 +1,6 @@
-import type { GameState } from "@/game/reducer";
+import type { GameState } from '@/game/reducer';
 
-export const ScorePanel = ({
-  state,
-  highScore
-}: {
-  state: GameState;
-  highScore: number;
-}) => {
+export const ScorePanel = ({ state, highScore }: { state: GameState; highScore: number }) => {
   return (
     <section className="panel score-panel" aria-live="polite">
       <div className="panel-heading">
@@ -15,7 +9,7 @@ export const ScorePanel = ({
       </div>
       <div className="primary-score">
         <small>Score</small>
-        <strong>{state.score.toLocaleString().padStart(6, "0")}</strong>
+        <strong>{state.score.toLocaleString().padStart(6, '0')}</strong>
       </div>
       <div className="metric-grid">
         <div>
@@ -24,11 +18,11 @@ export const ScorePanel = ({
         </div>
         <div>
           <small>Level</small>
-          <strong>{String(state.level).padStart(2, "0")}</strong>
+          <strong>{String(state.level).padStart(2, '0')}</strong>
         </div>
         <div>
           <small>Lines</small>
-          <strong>{String(state.lines).padStart(2, "0")}</strong>
+          <strong>{String(state.lines).padStart(2, '0')}</strong>
         </div>
         <div>
           <small>Speed</small>

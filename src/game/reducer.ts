@@ -1,4 +1,10 @@
-import { clearFullRows, createBoard, getDropDistance, hasCollision, mergePiece } from '@/game/board';
+import {
+  clearFullRows,
+  createBoard,
+  getDropDistance,
+  hasCollision,
+  mergePiece,
+} from '@/game/board';
 import { levelForLines, scoreLines } from '@/game/scoring';
 import { createBag, rotateMatrix, spawnPiece } from '@/game/tetrominoes';
 import type { ActivePiece, Board, PieceType } from '@/game/types';

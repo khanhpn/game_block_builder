@@ -1,17 +1,17 @@
-import { useMemo } from "react";
-import { getDropDistance } from "@/game/board";
-import type { GameState } from "@/game/reducer";
-import type { PieceType } from "@/game/types";
+import { useMemo } from 'react';
+import { getDropDistance } from '@/game/board';
+import type { GameState } from '@/game/reducer';
+import type { PieceType } from '@/game/types';
 
 export type DisplayCell = {
   type: PieceType | null;
-  mode?: "active" | "ghost";
+  mode?: 'active' | 'ghost';
 };
 
 const paintPiece = (
   cells: DisplayCell[][],
   state: GameState,
-  mode: "active" | "ghost",
+  mode: 'active' | 'ghost',
   offsetY = 0,
 ) => {
   state.activePiece.matrix.forEach((row, rowIndex) =>
@@ -28,17 +28,10 @@ const paintPiece = (
 
 export const useBoardCells = (state: GameState): DisplayCell[] =>
   useMemo(() => {
-    const cells: DisplayCell[][] = state.board.map((row) =>
-      row.map((type) => ({ type })),
-    );
-    if (state.status === "playing") {
-      paintPiece(
-        cells,
-        state,
-        "ghost",
-        getDropDistance(state.board, state.activePiece),
-      );
+    const cells: DisplayCell[][] = state.board.map((row) => row.map((type) => ({ type })));
+    if (state.status === 'playing') {
+      paintPiece(cells, state, 'ghost', getDropDistance(state.board, state.activePiece));
     }
-    paintPiece(cells, state, "active");
+    paintPiece(cells, state, 'active');
     return cells.flat();
   }, [state]);

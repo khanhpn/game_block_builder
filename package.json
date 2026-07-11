@@ -1,24 +1,26 @@
 {
   "name": "neon-blocks",
   "author": "Khanh Pham",
-  "description": "Neon Blocks is a platform for creating and sharing blocks of code.",
-  "homepage": "https://neonblocks.com",
+  "description": "A polished browser-based Tetris game with neon arcade visuals.",
+  "homepage": "https://khanhpn.github.io/game_block_builder/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/neon-blocks/neon-blocks.git"
+    "url": "https://github.com/khanhpn/game_block_builder.git"
   },
   "license": "MIT",
   "keywords": [
-    "neon",
-    "blocks",
-    "code",
-    "platform"
+    "tetris",
+    "react",
+    "typescript",
+    "vite",
+    "game",
+    "arcade"
   ],
   "contributors": [
     {
       "name": "Khanh Pham",
       "email": "phamkhanh97@gmail.com",
-      "url": "https://neonblocks.com"
+      "url": "https://github.com/khanhpn"
     }
   ],
   "bugs": {
@@ -31,7 +33,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
+    "prepare": "husky",
     "test": "vitest",
     "typecheck": "tsc -b --pretty false"
   },
@@ -40,6 +45,13 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "vite": "^8.1.4"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,md,json,yml,yaml,html}": "prettier --write"
   },
   "devDependencies": {
     "@eslint/js": "latest",
@@ -52,7 +64,10 @@
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
+    "husky": "^9.1.7",
     "jsdom": "latest",
+    "lint-staged": "^17.0.8",
+    "prettier": "^3.9.5",
     "typescript": "^6.0.3",
     "typescript-eslint": "latest",
     "vitest": "^4.1.10"

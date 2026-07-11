@@ -8,7 +8,9 @@ describe('useGameLoop', () => {
 
   it('ticks at the requested delay and stops when disabled', () => {
     const onTick = vi.fn();
-    const { rerender } = renderHook(({ delay }) => useGameLoop(onTick, delay), { initialProps: { delay: 500 as number | null } });
+    const { rerender } = renderHook(({ delay }) => useGameLoop(onTick, delay), {
+      initialProps: { delay: 500 as number | null },
+    });
     vi.advanceTimersByTime(1000);
     expect(onTick).toHaveBeenCalledTimes(2);
     rerender({ delay: null });

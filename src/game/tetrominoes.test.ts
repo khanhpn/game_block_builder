@@ -7,7 +7,15 @@ describe('tetrominoes', () => {
   });
 
   it('rotates a matrix clockwise', () => {
-    expect(rotateMatrix([[1, 0], [1, 1]])).toEqual([[1, 1], [1, 0]]);
+    expect(
+      rotateMatrix([
+        [1, 0],
+        [1, 1],
+      ]),
+    ).toEqual([
+      [1, 1],
+      [1, 0],
+    ]);
   });
 
   it('creates one of every piece in each bag', () => {

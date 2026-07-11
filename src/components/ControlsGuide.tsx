@@ -1,9 +1,9 @@
 const controls = [
-  { keys: ["←", "→"], label: "Move" },
-  { keys: ["↑"], label: "Rotate" },
-  { keys: ["↓"], label: "Soft drop" },
-  { keys: ["SPACE"], label: "Hard drop" },
-  { keys: ["P"], label: "Pause" }
+  { keys: ['←', '→'], label: 'Move' },
+  { keys: ['↑'], label: 'Rotate' },
+  { keys: ['↓'], label: 'Soft drop' },
+  { keys: ['SPACE'], label: 'Hard drop' },
+  { keys: ['P'], label: 'Pause' },
 ];
 
 export const ControlsGuide = () => {

@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { clearFullRows, createBoard, getDropDistance, hasCollision, mergePiece } from '@/game/board';
+import {
+  clearFullRows,
+  createBoard,
+  getDropDistance,
+  hasCollision,
+  mergePiece,
+} from '@/game/board';
 import { spawnPiece } from '@/game/tetrominoes';
 
 describe('board rules', () => {

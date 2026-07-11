@@ -7,7 +7,9 @@ describe('useHighScore', () => {
 
   it('persists the greatest score', () => {
     localStorage.setItem('neon-blocks-high-score', '80');
-    const { result, rerender } = renderHook(({ score }) => useHighScore(score), { initialProps: { score: 20 } });
+    const { result, rerender } = renderHook(({ score }) => useHighScore(score), {
+      initialProps: { score: 20 },
+    });
     expect(result.current).toBe(80);
     act(() => rerender({ score: 120 }));
     expect(result.current).toBe(120);
@@ -15,7 +17,9 @@ describe('useHighScore', () => {
   });
 
   it('keeps working when storage access fails', () => {
-    vi.spyOn(Storage.prototype, 'getItem').mockImplementationOnce(() => { throw new Error('blocked'); });
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementationOnce(() => {
+      throw new Error('blocked');
+    });
     expect(renderHook(() => useHighScore(12)).result.current).toBe(12);
   });
 });

@@ -3,7 +3,9 @@
   border: 1px solid var(--panel-border);
   border-radius: 13px;
   background: linear-gradient(145deg, rgb(14 24 50 / 72%), rgb(5 10 24 / 74%));
-  box-shadow: inset 0 1px rgb(255 255 255 / 3%), 0 18px 45px rgb(0 0 0 / 18%);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 3%),
+    0 18px 45px rgb(0 0 0 / 18%);
   backdrop-filter: blur(16px);
 }
 
@@ -24,7 +26,7 @@
   min-height: 33px;
 }
 
-.control-row>span {
+.control-row > span {
   display: flex;
   gap: 4px;
 }
@@ -32,7 +34,7 @@
 .control-row b {
   color: #76859f;
   font-size: 9px;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -47,7 +49,9 @@ kbd {
   border-bottom-color: rgb(135 160 207 / 35%);
   border-radius: 5px;
   background: linear-gradient(#16213a, #0d1427);
-  box-shadow: inset 0 1px rgb(255 255 255 / 5%), 0 2px 3px rgb(0 0 0 / 28%);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 5%),
+    0 2px 3px rgb(0 0 0 / 28%);
   font: 700 9px/1 monospace;
 }
 
@@ -69,14 +73,16 @@ kbd {
   color: #64728d;
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .primary-score strong {
   color: var(--cyan);
-  font: 800 clamp(30px, 3vw, 42px)/1 ui-monospace, monospace;
-  letter-spacing: .04em;
+  font:
+    800 clamp(30px, 3vw, 42px)/1 ui-monospace,
+    monospace;
+  letter-spacing: 0.04em;
   text-shadow: 0 0 20px rgb(69 231 255 / 34%);
 }
 
@@ -99,7 +105,9 @@ kbd {
 
 .metric-grid strong {
   color: #dce4f4;
-  font: 700 16px/1 ui-monospace, monospace;
+  font:
+    700 16px/1 ui-monospace,
+    monospace;
 }
 
 .next-panel .panel-heading {
