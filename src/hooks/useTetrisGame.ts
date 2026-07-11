@@ -5,7 +5,7 @@ import { useGameLoop } from './useGameLoop';
 import { useHighScore } from './useHighScore';
 import { useKeyboardControls } from './useKeyboardControls';
 
-export function useTetrisGame() {
+export const useTetrisGame = () => {
   const [state, dispatch] = useReducer(gameReducer, undefined, createInitialState);
   const tick = useCallback(() => dispatch({ type: 'TICK' }), []);
   const delay = state.status === 'playing' ? gravityForLevel(state.level) : null;
@@ -15,4 +15,4 @@ export function useTetrisGame() {
   const highScore = useHighScore(state.score);
 
   return { state, highScore, dispatch };
-}
+};

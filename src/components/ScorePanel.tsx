@@ -1,6 +1,6 @@
 import type { GameState } from '../game/reducer';
 
-export function ScorePanel({ state, highScore }: { state: GameState; highScore: number }) {
+export const ScorePanel = ({ state, highScore }: { state: GameState; highScore: number }) => {
   return (
     <section className="panel score-panel" aria-live="polite">
       <div className="panel-heading"><span>Live metrics</span><span>SYNC</span></div>
@@ -13,4 +13,4 @@ export function ScorePanel({ state, highScore }: { state: GameState; highScore: 
       </div>
     </section>
   );
-}
+};

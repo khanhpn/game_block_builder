@@ -20,7 +20,7 @@ const paintPiece = (cells: DisplayCell[][], state: GameState, mode: 'active' | '
   }));
 };
 
-export function GameBoard({ state, dispatch }: GameBoardProps) {
+export const GameBoard = ({ state, dispatch }: GameBoardProps) => {
   const cells = useMemo(() => {
     const displayCells: DisplayCell[][] = state.board.map((row) => row.map((type) => ({ type })));
     if (state.status === 'playing') {
@@ -46,4 +46,4 @@ export function GameBoard({ state, dispatch }: GameBoardProps) {
       <GameOverlay status={state.status} score={state.score} dispatch={dispatch} />
     </section>
   );
-}
+};

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, type Dispatch } from 'react';
 import type { GameAction, GameStatus } from '../game/reducer';
 
-export function useKeyboardControls(dispatch: Dispatch<GameAction>, status: GameStatus): void {
+export const useKeyboardControls = (dispatch: Dispatch<GameAction>, status: GameStatus): void => {
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     let action: GameAction | null = null;
 
@@ -30,4 +30,4 @@ export function useKeyboardControls(dispatch: Dispatch<GameAction>, status: Game
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
-}
+};

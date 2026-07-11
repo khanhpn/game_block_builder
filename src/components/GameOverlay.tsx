@@ -7,7 +7,7 @@ interface GameOverlayProps {
   dispatch: Dispatch<GameAction>;
 }
 
-export function GameOverlay({ status, score, dispatch }: GameOverlayProps) {
+export const GameOverlay = ({ status, score, dispatch }: GameOverlayProps) => {
   const handleAction = useCallback(() => {
     const action: GameAction = status === 'ready'
       ? { type: 'START' }
@@ -36,4 +36,4 @@ export function GameOverlay({ status, score, dispatch }: GameOverlayProps) {
       <small>or press Enter</small>
     </div>
   );
-}
+};

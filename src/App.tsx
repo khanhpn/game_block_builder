@@ -4,7 +4,7 @@ import { NextPiece } from './components/NextPiece';
 import { ScorePanel } from './components/ScorePanel';
 import { useTetrisGame } from './hooks/useTetrisGame';
 
-export default function App() {
+const App = () => {
   const { state, highScore, dispatch } = useTetrisGame();
   return (
     <main className="game-shell">
@@ -18,4 +18,6 @@ export default function App() {
       </aside>
     </main>
   );
-}
+};
+
+export default App;

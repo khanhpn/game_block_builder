@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-export function useGameLoop(callback: () => void, delay: number | null): void {
+export const useGameLoop = (callback: () => void, delay: number | null): void => {
   const callbackRef = useRef(callback);
 
   useEffect(() => {
@@ -14,4 +14,4 @@ export function useGameLoop(callback: () => void, delay: number | null): void {
     const timer = window.setInterval(runTick, delay);
     return () => window.clearInterval(timer);
   }, [delay, runTick]);
-}
+};

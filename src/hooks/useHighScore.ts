@@ -11,7 +11,7 @@ const readHighScore = (): number => {
   }
 };
 
-export function useHighScore(score: number): number {
+export const useHighScore = (score: number): number => {
   const [highScore, setHighScore] = useState(() => Math.max(readHighScore(), score));
   if (score > highScore) setHighScore(score);
 
@@ -24,4 +24,4 @@ export function useHighScore(score: number): number {
   }, [highScore]);
 
   return highScore;
-}
+};

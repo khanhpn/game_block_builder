@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { TETROMINOES } from '../game/tetrominoes';
 import type { PieceType } from '../game/types';
 
-export function NextPiece({ piece }: { piece: PieceType }) {
+export const NextPiece = ({ piece }: { piece: PieceType }) => {
   const matrix = TETROMINOES[piece];
   const previewCells = useMemo(() => Array.from({ length: 16 }, (_, index) => {
     const row = Math.floor(index / 4);
@@ -22,4 +22,4 @@ export function NextPiece({ piece }: { piece: PieceType }) {
       </div>
     </section>
   );
-}
+};

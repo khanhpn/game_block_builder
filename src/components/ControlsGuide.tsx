@@ -6,7 +6,7 @@ const controls = [
   { keys: ['P'], label: 'Pause' },
 ];
 
-export function ControlsGuide() {
+export const ControlsGuide = () => {
   return (
     <aside className="left-column">
       <div className="brand-mark"><span className="brand-icon">N</span><span>NEON<br /><b>BLOCKS</b></span></div>
@@ -18,4 +18,4 @@ export function ControlsGuide() {
       <p className="desktop-note"><span /> Desktop mode optimized</p>
     </aside>
   );
-}
+};
