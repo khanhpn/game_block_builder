@@ -2,7 +2,7 @@
 
 ## Goal
 
-Create a polished, product-first English README for Neon Blocks that accurately presents the game to players and developers visiting the public GitHub repository.
+Create a polished, product-first English README for Neon Blocks, move remaining component logic into custom hooks, and enforce consistent formatting and linting before commits and deployments.
 
 ## Audience
 
@@ -24,6 +24,29 @@ Create a polished, product-first English README for Neon Blocks that accurately 
 10. GitHub Pages deployment section describing the existing workflow on pushes to `master` and the repository Pages URL.
 11. MIT license section linking to the repository license.
 
+## Component Logic Refactor
+
+- Add `useBoardCells(state)` to build the flattened 200-cell render model containing locked, ghost, and active blocks.
+- Add `useNextPiecePreview(piece)` to build the 4×4 next-piece preview model.
+- Add `useGameOverlayAction(status, dispatch)` to provide the stable start, resume, or restart callback.
+- Keep component files focused on props and JSX rendering.
+- Implement all new hooks and functions as arrow functions.
+- Preserve existing `useMemo` and `useCallback` behavior inside the extracted hooks.
+- Do not wrap components with `memo()` or `React.memo()`.
+- Add focused tests for each extracted hook and keep existing component behavior tests passing.
+
+## Formatting and Pre-commit Quality Gate
+
+- Add Prettier with repository configuration for TypeScript, TSX, CSS, Markdown, JSON, and YAML.
+- Add `pnpm format` to format supported repository files.
+- Add `pnpm format:check` to verify formatting without writes.
+- Add Husky and lint-staged.
+- Configure the pre-commit hook to run lint-staged automatically.
+- For staged TypeScript and TSX files, run Prettier first and ESLint with fixes second.
+- For other supported staged text files, run Prettier.
+- A Prettier or ESLint failure must stop the commit.
+- Add `pnpm format:check` to the GitHub Pages build job before linting so unformatted code cannot deploy.
+
 ## Presentation Rules
 
 - Use concise, professional English and consistent title casing.
@@ -35,16 +58,17 @@ Create a polished, product-first English README for Neon Blocks that accurately 
 
 ## Metadata Alignment
 
-Update `package.json` so its description, homepage, repository URL, keywords, and bug tracker describe `khanhpn/game_block_builder` and the Neon Blocks game. Preserve dependency versions, scripts, package manager, author, version, and license unless factual correction requires otherwise.
+Update `package.json` so its description, homepage, repository URL, keywords, and bug tracker describe `khanhpn/game_block_builder` and the Neon Blocks game. Add only the Prettier, Husky, lint-staged dependencies and scripts required by this design. Preserve unrelated dependency versions, author, version, and license.
 
 ## Verification
 
 - Check every README link and command against local repository configuration.
 - Confirm README Markdown has no placeholder text, stale code-platform wording, or unsupported claims.
-- Run `pnpm lint`, `pnpm test --run`, `pnpm typecheck`, and `pnpm build` after metadata changes.
+- Run `pnpm format`, then `pnpm format:check`, `pnpm lint`, `pnpm test --run`, `pnpm typecheck`, and `pnpm build` before committing implementation work.
+- Verify the pre-commit hook succeeds on correctly formatted staged files and rejects a deliberately malformed staged fixture without altering production files.
 - Confirm the test count from fresh output before mentioning it in README.
 - Run `git diff --check` and inspect the final Markdown source.
 
 ## Acceptance Criteria
 
-The repository root contains a professional English `README.md` that accurately introduces Neon Blocks, makes the live demo and controls immediately discoverable, documents architecture and local development, matches the GitHub Pages workflow, and agrees with corrected package metadata.
+The repository root contains a professional English `README.md` that accurately introduces Neon Blocks, makes the live demo and controls immediately discoverable, documents architecture and local development, matches the GitHub Pages workflow, and agrees with corrected package metadata. Components contain rendering concerns only, extracted custom hooks retain tested behavior, and every commit/deployment is guarded by Prettier and ESLint checks.
