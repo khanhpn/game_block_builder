@@ -19,8 +19,10 @@ jobs:
   build:
     name: Build and verify
     runs-on: ubuntu-latest
+
     env:
       VITE_BASE_PATH: /${{ github.event.repository.name }}/
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -67,10 +69,94 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  release:
+    name: Create GitHub Release
+    needs: deploy
+
+    # Chỉ tạo release khi push vào master.
+    # Bấm Run workflow thủ công chỉ deploy, không tạo release.
+    if: github.event_name == 'push'
+
+    runs-on: ubuntu-latest
+
+    # Chỉ job release mới có quyền tạo tag và release.
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Read version from package.json
+        id: version
+        shell: bash
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+
+          if [[ -z "$VERSION" || "$VERSION" == "undefined" ]]; then
+            echo "::error::Cannot read version from package.json"
+            exit 1
+          fi
+
+          TAG="v$VERSION"
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+          echo "Package version: $VERSION"
+          echo "Release tag: $TAG"
+
+      - name: Check if tag already exists
+        id: check_tag
+        shell: bash
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if git ls-remote \
+            --exit-code \
+            --tags \
+            origin \
+            "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Tag $TAG already exists. Release will be skipped."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Tag $TAG does not exist. A new release will be created."
+          fi
+
+      - name: Create GitHub Release
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        shell: bash
+        run: |
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "$TAG" \
+            --generate-notes
+
+      - name: Skip existing release
+        if: steps.check_tag.outputs.exists == 'true'
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          echo "Skipped: tag $TAG already exists."

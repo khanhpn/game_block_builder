@@ -2,7 +2,7 @@
   "name": "neon-blocks",
   "author": "Khanh Pham",
   "description": "A polished browser-based Tetris game with neon arcade visuals.",
-  "homepage": "https://khanhpn.github.io/game_block_builder/",
+  "homepage": "https://khanhpn.github.io/game_block_builder",
   "repository": {
     "type": "git",
     "url": "https://github.com/khanhpn/game_block_builder.git"
@@ -19,7 +19,7 @@
   "contributors": [
     {
       "name": "Khanh Pham",
-      "email": "phamkhanh97@gmail.com",
+      "email": "phamkhanh90@gmail.com",
       "url": "https://github.com/khanhpn"
     }
   ],
