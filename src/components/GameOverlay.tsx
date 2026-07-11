@@ -1,4 +1,4 @@
-import type { Dispatch } from 'react';
+import { useCallback, type Dispatch } from 'react';
 import type { GameAction, GameStatus } from '../game/reducer';
 
 interface GameOverlayProps {
@@ -18,13 +18,14 @@ export function GameOverlay({ status, score, dispatch }: GameOverlayProps) {
 
   if (!content) return null;
   const action: GameAction = status === 'ready' ? { type: 'START' } : status === 'paused' ? { type: 'TOGGLE_PAUSE' } : { type: 'RESTART' };
+  const handleAction = useCallback(() => dispatch(action), [action, dispatch]);
 
   return (
     <div className="game-overlay">
       <span className="eyebrow">{content.eyebrow}</span>
       <h2>{content.title}</h2>
       <p>{content.text}</p>
-      <button type="button" onClick={() => dispatch(action)}>{content.button}</button>
+      <button type="button" onClick={handleAction}>{content.button}</button>
       <small>or press Enter</small>
     </div>
   );

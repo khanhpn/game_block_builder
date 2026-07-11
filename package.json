@@ -1,5 +1,29 @@
 {
   "name": "neon-blocks",
+  "author": "Khanh Pham",
+  "description": "Neon Blocks is a platform for creating and sharing blocks of code.",
+  "homepage": "https://neonblocks.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neon-blocks/neon-blocks.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "neon",
+    "blocks",
+    "code",
+    "platform"
+  ],
+  "contributors": [
+    {
+      "name": "Khanh Pham",
+      "email": "phamkhanh97@gmail.com",
+      "url": "https://neonblocks.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/khanhpn/game_block_builder/issues"
+  },
   "private": true,
   "version": "0.1.0",
   "type": "module",

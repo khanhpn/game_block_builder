@@ -1,4 +1,4 @@
-import type { Dispatch } from 'react';
+import { useMemo, type Dispatch } from 'react';
 import { getDropDistance } from '../game/board';
 import type { GameAction, GameState } from '../game/reducer';
 import type { PieceType } from '../game/types';
@@ -21,15 +21,20 @@ const paintPiece = (cells: DisplayCell[][], state: GameState, mode: 'active' | '
 };
 
 export function GameBoard({ state, dispatch }: GameBoardProps) {
-  const cells: DisplayCell[][] = state.board.map((row) => row.map((type) => ({ type })));
-  if (state.status === 'playing') paintPiece(cells, state, 'ghost', getDropDistance(state.board, state.activePiece));
-  paintPiece(cells, state, 'active');
+  const cells = useMemo(() => {
+    const displayCells: DisplayCell[][] = state.board.map((row) => row.map((type) => ({ type })));
+    if (state.status === 'playing') {
+      paintPiece(displayCells, state, 'ghost', getDropDistance(state.board, state.activePiece));
+    }
+    paintPiece(displayCells, state, 'active');
+    return displayCells.flat();
+  }, [state]);
 
   return (
     <section className="board-frame" aria-label="Tetris game board">
       <div className="board-status"><span>GRID 10×20</span><span className={`status-dot status-dot--${state.status}`}>{state.status}</span></div>
       <div className="game-board" role="grid" aria-label="Playfield">
-        {cells.flat().map((cell, index) => (
+        {cells.map((cell, index) => (
           <div
             role="gridcell"
             aria-label={cell.type ? `${cell.type} block` : 'Empty'}
