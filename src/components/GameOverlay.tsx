@@ -1,5 +1,5 @@
 import { useCallback, type Dispatch } from 'react';
-import type { GameAction, GameStatus } from '../game/reducer';
+import type { GameAction, GameStatus } from '@/game/reducer';
 
 interface GameOverlayProps {
   status: GameStatus;

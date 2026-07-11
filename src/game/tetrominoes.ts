@@ -1,4 +1,4 @@
-import { BOARD_WIDTH, type ActivePiece, type Matrix, type PieceType } from './types';
+import { BOARD_WIDTH, type ActivePiece, type Matrix, type PieceType } from '@/game/types';
 
 export const TETROMINOES: Record<PieceType, Matrix> = {
   I: [[1, 1, 1, 1]],

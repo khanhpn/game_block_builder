@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { useHighScore } from './useHighScore';
+import { useHighScore } from '@/hooks/useHighScore';
 
 describe('useHighScore', () => {
   beforeEach(() => localStorage.clear());

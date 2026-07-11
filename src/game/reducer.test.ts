@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createInitialState, gameReducer } from './reducer';
+import { createInitialState, gameReducer } from '@/game/reducer';
 
 describe('game reducer', () => {
   it('starts, pauses, resumes, and restarts a game', () => {

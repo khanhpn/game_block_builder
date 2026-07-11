@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { clearFullRows, createBoard, getDropDistance, hasCollision, mergePiece } from './board';
-import { spawnPiece } from './tetrominoes';
+import { clearFullRows, createBoard, getDropDistance, hasCollision, mergePiece } from '@/game/board';
+import { spawnPiece } from '@/game/tetrominoes';
 
 describe('board rules', () => {
   it('creates a 10 by 20 empty board', () => {

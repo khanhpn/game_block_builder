@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { useGameLoop } from './useGameLoop';
+import { useGameLoop } from '@/hooks/useGameLoop';
 
 describe('useGameLoop', () => {
   beforeEach(() => vi.useFakeTimers());

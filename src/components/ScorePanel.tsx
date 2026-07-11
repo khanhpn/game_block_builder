@@ -1,4 +1,4 @@
-import type { GameState } from '../game/reducer';
+import type { GameState } from '@/game/reducer';
 
 export const ScorePanel = ({ state, highScore }: { state: GameState; highScore: number }) => {
   return (

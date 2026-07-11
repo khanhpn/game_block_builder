@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { TETROMINOES } from '../game/tetrominoes';
-import type { PieceType } from '../game/types';
+import { TETROMINOES } from '@/game/tetrominoes';
+import type { PieceType } from '@/game/types';
 
 export const NextPiece = ({ piece }: { piece: PieceType }) => {
   const matrix = TETROMINOES[piece];

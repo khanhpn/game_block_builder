@@ -1,9 +1,9 @@
 import { useCallback, useReducer } from 'react';
-import { gameReducer, createInitialState } from '../game/reducer';
-import { gravityForLevel } from '../game/scoring';
-import { useGameLoop } from './useGameLoop';
-import { useHighScore } from './useHighScore';
-import { useKeyboardControls } from './useKeyboardControls';
+import { gameReducer, createInitialState } from '@/game/reducer';
+import { gravityForLevel } from '@/game/scoring';
+import { useGameLoop } from '@/hooks/useGameLoop';
+import { useHighScore } from '@/hooks/useHighScore';
+import { useKeyboardControls } from '@/hooks/useKeyboardControls';
 
 export const useTetrisGame = () => {
   const [state, dispatch] = useReducer(gameReducer, undefined, createInitialState);

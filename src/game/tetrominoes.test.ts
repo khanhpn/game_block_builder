@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { TETROMINOES, createBag, rotateMatrix, spawnPiece } from './tetrominoes';
+import { TETROMINOES, createBag, rotateMatrix, spawnPiece } from '@/game/tetrominoes';
 
 describe('tetrominoes', () => {
   it('defines all seven classic pieces', () => {

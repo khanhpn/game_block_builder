@@ -1,8 +1,8 @@
 import { useMemo, type Dispatch } from 'react';
-import { getDropDistance } from '../game/board';
-import type { GameAction, GameState } from '../game/reducer';
-import type { PieceType } from '../game/types';
-import { GameOverlay } from './GameOverlay';
+import { getDropDistance } from '@/game/board';
+import type { GameAction, GameState } from '@/game/reducer';
+import type { PieceType } from '@/game/types';
+import { GameOverlay } from '@/components/GameOverlay';
 
 interface GameBoardProps {
   state: GameState;

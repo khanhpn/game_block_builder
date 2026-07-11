@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gravityForLevel, levelForLines, scoreLines } from './scoring';
+import { gravityForLevel, levelForLines, scoreLines } from '@/game/scoring';
 
 describe('scoring', () => {
   it('scores one through four cleared rows', () => {

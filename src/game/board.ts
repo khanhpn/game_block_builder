@@ -1,4 +1,4 @@
-import { BOARD_HEIGHT, BOARD_WIDTH, type ActivePiece, type Board, type Cell } from './types';
+import { BOARD_HEIGHT, BOARD_WIDTH, type ActivePiece, type Board, type Cell } from '@/game/types';
 
 export const createBoard = (): Board =>
   Array.from({ length: BOARD_HEIGHT }, () => Array<Cell>(BOARD_WIDTH).fill(null));

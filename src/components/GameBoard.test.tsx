@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { createInitialState } from '../game/reducer';
-import { GameBoard } from './GameBoard';
+import { createInitialState } from '@/game/reducer';
+import { GameBoard } from '@/components/GameBoard';
 
 describe('GameBoard', () => {
   it('renders 200 cells with active and ghost pieces', () => {

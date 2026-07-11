@@ -1,5 +1,5 @@
 import { useCallback, useEffect, type Dispatch } from 'react';
-import type { GameAction, GameStatus } from '../game/reducer';
+import type { GameAction, GameStatus } from '@/game/reducer';
 
 export const useKeyboardControls = (dispatch: Dispatch<GameAction>, status: GameStatus): void => {
   const handleKeyDown = useCallback((event: KeyboardEvent) => {

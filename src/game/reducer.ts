@@ -1,7 +1,7 @@
-import { clearFullRows, createBoard, getDropDistance, hasCollision, mergePiece } from './board';
-import { levelForLines, scoreLines } from './scoring';
-import { createBag, rotateMatrix, spawnPiece } from './tetrominoes';
-import type { ActivePiece, Board, PieceType } from './types';
+import { clearFullRows, createBoard, getDropDistance, hasCollision, mergePiece } from '@/game/board';
+import { levelForLines, scoreLines } from '@/game/scoring';
+import { createBag, rotateMatrix, spawnPiece } from '@/game/tetrominoes';
+import type { ActivePiece, Board, PieceType } from '@/game/types';
 
 export type GameStatus = 'ready' | 'playing' | 'paused' | 'gameover';
 

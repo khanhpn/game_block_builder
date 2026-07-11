@@ -1,6 +1,6 @@
 import { fireEvent, renderHook } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { useKeyboardControls } from './useKeyboardControls';
+import { useKeyboardControls } from '@/hooks/useKeyboardControls';
 
 describe('useKeyboardControls', () => {
   it('maps movement and game keys to actions', () => {

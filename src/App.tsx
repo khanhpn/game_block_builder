@@ -1,8 +1,8 @@
-import { ControlsGuide } from './components/ControlsGuide';
-import { GameBoard } from './components/GameBoard';
-import { NextPiece } from './components/NextPiece';
-import { ScorePanel } from './components/ScorePanel';
-import { useTetrisGame } from './hooks/useTetrisGame';
+import { ControlsGuide } from '@/components/ControlsGuide';
+import { GameBoard } from '@/components/GameBoard';
+import { NextPiece } from '@/components/NextPiece';
+import { ScorePanel } from '@/components/ScorePanel';
+import { useTetrisGame } from '@/hooks/useTetrisGame';
 
 const App = () => {
   const { state, highScore, dispatch } = useTetrisGame();
