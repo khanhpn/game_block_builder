@@ -5,7 +5,7 @@ import { ScorePanel } from '@/components/ScorePanel';
 import { useTetrisGame } from '@/hooks/useTetrisGame';
 
 const App = () => {
-  const { state, highScore, dispatch } = useTetrisGame();
+  const { audio, state, highScore, dispatch } = useTetrisGame();
   return (
     <main className="game-shell">
       <div className="ambient ambient--one" />
@@ -13,7 +13,16 @@ const App = () => {
       <ControlsGuide />
       <GameBoard state={state} dispatch={dispatch} />
       <aside className="stats-column">
-        <ScorePanel state={state} highScore={highScore} />
+        <ScorePanel
+          state={state}
+          highScore={highScore}
+          audio={{
+            muted: audio.muted,
+            volume: audio.volume,
+            onMuteToggle: audio.toggleMute,
+            onVolumeChange: audio.handleVolumeChange,
+          }}
+        />
         <NextPiece piece={state.nextPiece} />
         <div className="system-message">
           <span>◆</span>

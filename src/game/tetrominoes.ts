@@ -26,13 +26,38 @@ export const TETROMINOES: Record<PieceType, Matrix> = {
     [0, 0, 1],
     [1, 1, 1],
   ],
+  I_MIRROR: [[1], [1], [1], [1]],
+  O_MIRROR: [
+    [1, 1],
+    [1, 1],
+  ],
+  T_MIRROR: [
+    [0, 1, 0],
+    [1, 1, 1],
+  ],
+  S_MIRROR: [
+    [1, 1, 0],
+    [0, 1, 1],
+  ],
+  Z_MIRROR: [
+    [0, 1, 1],
+    [1, 1, 0],
+  ],
+  J_MIRROR: [
+    [0, 0, 1],
+    [1, 1, 1],
+  ],
+  L_MIRROR: [
+    [1, 0, 0],
+    [1, 1, 1],
+  ],
 };
 
 export const rotateMatrix = (matrix: Matrix): Matrix =>
   matrix[0].map((_, column) => matrix.map((row) => row[column]).reverse());
 
 export const createBag = (random = Math.random): PieceType[] => {
-  const bag: PieceType[] = ['I', 'O', 'T', 'S', 'Z', 'J', 'L'];
+  const bag: PieceType[] = Object.keys(TETROMINOES) as PieceType[];
 
   for (let index = bag.length - 1; index > 0; index -= 1) {
     const target = Math.floor(random() * (index + 1));

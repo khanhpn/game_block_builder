@@ -20,8 +20,9 @@ Neon Blocks is a browser-based implementation of classic Tetris, built for respo
 
 ## Features
 
-- All seven classic tetrominoes: `I`, `O`, `T`, `S`, `Z`, `J`, and `L`
-- Fair piece distribution through a 7-bag randomizer
+- Fourteen balanced tetromino variants: seven classic shapes plus seven mirror variants
+- Fair piece distribution through a 14-bag randomizer
+- Expanded 15×25 playfield for longer runs and more strategic stacking
 - Ghost piece that previews the landing position
 - Collision detection, wall kicks, soft drop, and hard drop
 - Line clearing, scoring, progressive levels, and increasing gravity
@@ -29,6 +30,8 @@ Neon Blocks is a browser-based implementation of classic Tetris, built for respo
 - Ready, paused, and game-over states with keyboard shortcuts
 - Responsive neon arcade interface for desktop and narrow viewports
 - Reduced-motion support for users who prefer fewer animations
+- Synthesized Web Audio cues for rotation, drops, line clears, and dramatic game over
+- In-game volume slider and mute toggle with persisted preferences
 
 ## Controls
 
@@ -107,7 +110,7 @@ Vite prints the local development URL after the server starts.
 
 ## Testing and Quality
 
-The current suite contains **29 tests across 12 test files**, covering the game engine, reducer, custom hooks, keyboard controls, persistence, board rendering, and application shell.
+The current suite contains **31 tests across 14 test files**, covering the game engine, reducer, custom hooks, keyboard controls, persistence, board rendering, audio fallback behavior, and application shell.
 
 Run the same quality gate used before deployment:
 

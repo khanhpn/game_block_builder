@@ -11,11 +11,8 @@ export const NextPiece = ({ piece }: { piece: PieceType }) => {
         <span>01</span>
       </div>
       <div className="preview-grid" aria-label={`Next piece ${piece}`}>
-        {previewCells.map((filled, index) => (
-          <span
-            className={filled ? `preview-cell piece-${piece.toLowerCase()}` : 'preview-cell'}
-            key={index}
-          />
+        {previewCells.map((cell, index) => (
+          <span className={cell.className} key={index} />
         ))}
       </div>
     </section>

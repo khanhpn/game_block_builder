@@ -110,6 +110,60 @@ kbd {
     monospace;
 }
 
+.audio-controls {
+  margin-top: 15px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(255 255 255 / 5%);
+}
+
+.audio-controls__header,
+.audio-controls__slider {
+  display: flex;
+  align-items: center;
+}
+
+.audio-controls__header {
+  justify-content: space-between;
+  color: #64728d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.audio-controls__header button {
+  padding: 3px 7px;
+  color: var(--cyan);
+  border: 1px solid rgb(69 231 255 / 24%);
+  border-radius: 4px;
+  background: rgb(69 231 255 / 6%);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.audio-controls__slider {
+  gap: 8px;
+  margin-top: 10px;
+  color: var(--cyan);
+}
+
+.audio-controls__slider input {
+  flex: 1;
+  height: 3px;
+  accent-color: var(--cyan);
+  cursor: pointer;
+}
+
+.audio-controls__slider output {
+  min-width: 30px;
+  color: #7888a5;
+  font: 700 9px/1 monospace;
+  text-align: right;
+}
+
 .next-panel .panel-heading {
   margin-bottom: 13px;
 }

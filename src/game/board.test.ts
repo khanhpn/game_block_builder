@@ -9,10 +9,10 @@ import {
 import { spawnPiece } from '@/game/tetrominoes';
 
 describe('board rules', () => {
-  it('creates a 10 by 20 empty board', () => {
+  it('creates a 15 by 25 empty board', () => {
     const board = createBoard();
-    expect(board).toHaveLength(20);
-    expect(board[0]).toHaveLength(10);
+    expect(board).toHaveLength(25);
+    expect(board[0]).toHaveLength(15);
     expect(board.flat().every((cell) => cell === null)).toBe(true);
   });
 
@@ -33,16 +33,16 @@ describe('board rules', () => {
 
   it('clears full rows and adds empty rows at the top', () => {
     const board = createBoard();
-    board[19] = Array(10).fill('I');
-    board[18][0] = 'L';
+    board[24] = Array(15).fill('I');
+    board[23][0] = 'L';
     const result = clearFullRows(board);
     expect(result.cleared).toBe(1);
     expect(result.board[0].every((cell) => cell === null)).toBe(true);
-    expect(result.board[19][0]).toBe('L');
+    expect(result.board[24][0]).toBe('L');
   });
 
   it('finds the hard-drop distance', () => {
     const piece = spawnPiece('O');
-    expect(getDropDistance(createBoard(), piece)).toBe(18);
+    expect(getDropDistance(createBoard(), piece)).toBe(23);
   });
 });
