@@ -1,8 +1,14 @@
 import { act, renderHook } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useGameAudio } from '@/hooks/useGameAudio';
 
 describe('useGameAudio', () => {
+  beforeEach(() => {
+    vi.spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue(undefined);
+  });
+
+  afterEach(() => vi.restoreAllMocks());
+
   it('exposes safe event playback when Web Audio is unavailable', () => {
     const { result } = renderHook(() => useGameAudio());
 
