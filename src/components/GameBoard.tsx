@@ -1,49 +1,15 @@
-import { useMemo, type Dispatch } from "react";
-import { getDropDistance } from "@/game/board";
+import type { Dispatch } from "react";
 import type { GameAction, GameState } from "@/game/reducer";
-import type { PieceType } from "@/game/types";
 import { GameOverlay } from "@/components/GameOverlay";
+import { useBoardCells } from "@/hooks/useBoardCells";
 
 interface GameBoardProps {
   state: GameState;
   dispatch: Dispatch<GameAction>;
 }
 
-type DisplayCell = { type: PieceType | null; mode?: "active" | "ghost" };
-
-const paintPiece = (
-  cells: DisplayCell[][],
-  state: GameState,
-  mode: "active" | "ghost",
-  offsetY = 0
-) => {
-  state.activePiece.matrix.forEach((row, rowIndex) =>
-    row.forEach((value, columnIndex) => {
-      if (!value) return;
-      const x = state.activePiece.x + columnIndex;
-      const y = state.activePiece.y + rowIndex + offsetY;
-      if (y >= 0 && y < cells.length && x >= 0 && x < cells[0].length)
-        cells[y][x] = { type: state.activePiece.type, mode };
-    })
-  );
-};
-
 export const GameBoard = ({ state, dispatch }: GameBoardProps) => {
-  const cells = useMemo(() => {
-    const displayCells: DisplayCell[][] = state.board.map((row) =>
-      row.map((type) => ({ type }))
-    );
-    if (state.status === "playing") {
-      paintPiece(
-        displayCells,
-        state,
-        "ghost",
-        getDropDistance(state.board, state.activePiece)
-      );
-    }
-    paintPiece(displayCells, state, "active");
-    return displayCells.flat();
-  }, [state]);
+  const cells = useBoardCells(state);
 
   return (
     <section className="board-frame" aria-label="Tetris game board">
@@ -61,7 +27,7 @@ export const GameBoard = ({ state, dispatch }: GameBoardProps) => {
             className={[
               "cell",
               cell.type && `piece-${cell.type.toLowerCase()}`,
-              cell.mode && `cell--${cell.mode}`
+              cell.mode && `cell--${cell.mode}`,
             ]
               .filter(Boolean)
               .join(" ")}
