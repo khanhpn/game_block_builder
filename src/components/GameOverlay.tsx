@@ -8,6 +8,15 @@ interface GameOverlayProps {
 }
 
 export function GameOverlay({ status, score, dispatch }: GameOverlayProps) {
+  const handleAction = useCallback(() => {
+    const action: GameAction = status === 'ready'
+      ? { type: 'START' }
+      : status === 'paused'
+        ? { type: 'TOGGLE_PAUSE' }
+        : { type: 'RESTART' };
+    dispatch(action);
+  }, [dispatch, status]);
+
   if (status === 'playing') return null;
 
   const content = {
@@ -17,8 +26,6 @@ export function GameOverlay({ status, score, dispatch }: GameOverlayProps) {
   }[status];
 
   if (!content) return null;
-  const action: GameAction = status === 'ready' ? { type: 'START' } : status === 'paused' ? { type: 'TOGGLE_PAUSE' } : { type: 'RESTART' };
-  const handleAction = useCallback(() => dispatch(action), [action, dispatch]);
 
   return (
     <div className="game-overlay">
